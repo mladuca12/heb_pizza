@@ -10,9 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
   isLoading = false;
-  isError = false;
+  isLoginFailed = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,11 +35,11 @@ export class LoginComponent {
       .subscribe({
         next: () => {
           this.isLoading = false;
-          this.isError = false;
+          this.isLoginFailed = false;
           this.router.navigate(['/home']);
         },
         error: () => {
-          this.isError = true;
+          this.isLoginFailed = true;
           this.isLoading = false;
         },
       });

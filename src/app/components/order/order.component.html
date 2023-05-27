@@ -1,1 +1,14 @@
-<p>order works!</p>
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <label for="crust">crust</label>
+  <input id="crust" type="text" formControlName="crust" />
+  <label for="flavor">flavor</label>
+  <input id="flavor" type="text" formControlName="flavor" />
+  <label for="size">size</label>
+  <input id="size" type="text" formControlName="size" />
+  <label for="tableNumber">tableNumber</label>
+  <input id="tableNumber" type="text" formControlName="tableNumber" />
+
+  <button type="submit" [disabled]="!orderForm.valid">Order Your Pizza</button>
+  <p *ngIf="isOrderCreationFailed">Could not create order. Please try again.</p>
+  <p *ngIf="isLoading">Loading...</p>
+</form>
