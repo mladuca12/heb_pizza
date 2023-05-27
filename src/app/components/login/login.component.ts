@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -32,10 +34,10 @@ export class LoginComponent {
         this.loginForm.value.password ?? ''
       )
       .subscribe({
-        next: (token) => {
-          console.log(token);
+        next: () => {
           this.isLoading = false;
           this.isError = false;
+          this.router.navigate(['/home']);
         },
         error: () => {
           this.isError = true;
