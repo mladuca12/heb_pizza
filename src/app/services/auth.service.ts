@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
-export interface Token {
+export interface AuthResponse {
   access_token: string;
 }
 
@@ -12,7 +12,17 @@ export interface Token {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<Token> {
-    return this.http.post<Token>('https://pizza-api-app.herokuapp.com/api/auth', { username, password });
+  login(username: string, password: string): Observable<AuthResponse> {
+    return this.http
+      .post<AuthResponse>('https://pizza-api-app.herokuapp.com/api/auth', {
+        username,
+        password,
+      })
+      .pipe(
+        map((res) => {
+          localStorage.setItem('token', res.access_token);
+          return res;
+        })
+      );
   }
 }

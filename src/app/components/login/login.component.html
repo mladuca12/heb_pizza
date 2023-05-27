@@ -2,6 +2,10 @@
    <label for="username">Username</label>
    <input id="username" type="text" formControlName="username">
    <label for="password">Password</label>
-   <input id="password" type="text" formControlName="password">
+   <input id="password" type="password" formControlName="password">
    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+   <p *ngIf="isError">
+      Username or password is incorrect. Please re-enter username and password
+   </p>
+   <p *ngIf="isLoading">Loading...</p>
 </form>
