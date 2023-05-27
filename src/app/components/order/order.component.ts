@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Order, OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class OrderComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) {
     this.orderForm = this.formBuilder.group({
       crust: ['', Validators.required],
@@ -37,8 +39,15 @@ export class OrderComponent {
         )
       )
       .subscribe({
-        next: () => console.log('success'),
-        error: (e) => console.log(e),
+        next: () => {
+         this.isLoading = false;
+         this.isOrderCreationFailed = false;
+         this.router.navigate(['/orders']);
+        },
+        error: () => {
+          this.isOrderCreationFailed = true;
+          this.isLoading = false;
+        },
       });
   }
 }
