@@ -1,6 +1,9 @@
 <div *ngIf="isLoading">
-   <p>Loading...</p>
+  <p>Loading...</p>
 </div>
 <ul>
-   <li *ngFor="let order of orders">{{order.flavor}}</li>
+  <li *ngFor="let order of orders">
+    {{ order.flavor }}
+    <button type="button" (click)="delete(order)">Cancel Order</button>
+  </li>
 </ul>

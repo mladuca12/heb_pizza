@@ -17,10 +17,15 @@ export class OrdersComponent implements OnInit {
     this.isLoading = true;
     this.orderService.getOrders().subscribe({
       next: (orders) => {
-         this.orders = orders;
-         this.isLoading = false;
+        this.orders = orders;
+        this.isLoading = false;
       },
       error: (e) => console.log(e),
     });
+  }
+
+  delete(order: Order) {
+    this.orderService.deleteOrder(order.id!).subscribe();
+    this.orders = this.orders.filter(o => o.id !== order.id);
   }
 }

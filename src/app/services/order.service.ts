@@ -61,5 +61,9 @@ export class OrderService {
       );
   }
 
-  deleteOrder(id: number) {}
+  deleteOrder(id: number) {
+    return this.http.delete(
+      `https://pizza-api-app.herokuapp.com/api/orders/${id}`
+    );
+  }
 }
