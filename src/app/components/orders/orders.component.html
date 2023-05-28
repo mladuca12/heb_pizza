@@ -1,9 +1,19 @@
 <div *ngIf="isLoading">
   <p>Loading...</p>
 </div>
-<ul>
-  <li *ngFor="let order of orders">
-    {{ order.flavor }}
-    <button type="button" (click)="delete(order)">Cancel Order</button>
-  </li>
-</ul>
+<div>
+   Filter orders
+   <input type="text" (keyup)="filterOrders()" [formControl]="filter">
+   <ul *ngIf="filter.value.length < 3">
+     <li *ngFor="let order of orders">
+       {{ order.flavor }}
+       <button type="button" (click)="delete(order)">Cancel Order</button>
+     </li>
+   </ul>
+   <ul *ngIf="filter.value.length > 2">
+      <li *ngFor="let order of filteredOrders">
+        {{ order.flavor }}
+        <button type="button" (click)="delete(order)">Cancel Order</button>
+      </li>
+    </ul>
+</div>

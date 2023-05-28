@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Order } from 'src/app/domain/order';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -10,6 +11,8 @@ import { OrderService } from 'src/app/services/order.service';
 export class OrdersComponent implements OnInit {
   isLoading = false;
   orders: Order[] = [];
+  filteredOrders: Order[] = [];
+  filter = new FormControl('', { nonNullable: true });
 
   constructor(private orderService: OrderService) {}
 
@@ -26,6 +29,13 @@ export class OrdersComponent implements OnInit {
 
   delete(order: Order) {
     this.orderService.deleteOrder(order.id!).subscribe();
-    this.orders = this.orders.filter(o => o.id !== order.id);
+    this.orders = this.orders.filter((o) => o.id !== order.id);
+    this.filteredOrders = this.filteredOrders.filter((o) => o.id !== order.id);
+  }
+
+  filterOrders() {
+    this.filteredOrders = this.orders.filter((o) =>
+      o.flavor.toLowerCase().includes(this.filter.value.toLowerCase())
+    );
   }
 }
