@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Order, OrderService } from 'src/app/services/order.service';
+import { Order } from 'src/app/domain/order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-order',

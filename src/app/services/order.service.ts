@@ -1,17 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-
-export class Order {
-  constructor(
-    public crust: string,
-    public flavor: string,
-    public size: string,
-    public tableNumber: number,
-    public id?: number,
-    public timeStamp?: string
-  ) {}
-}
+import { Order } from '../domain/order';
 
 interface OrderResponse {
   Order_ID: number;
