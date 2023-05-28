@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface AuthResponse {
   access_token: string;
@@ -14,7 +15,7 @@ export class AuthService {
 
   login(username: string, password: string): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>('https://pizza-api-app.herokuapp.com/api/auth', {
+      .post<AuthResponse>(`${environment.apiUrl}/api/auth`, {
         username,
         password,
       })

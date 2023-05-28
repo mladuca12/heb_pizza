@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Order } from '../domain/order';
+import { environment } from 'src/environments/environment';
 
 interface OrderResponse {
   Order_ID: number;
@@ -20,7 +21,7 @@ export class OrderService {
 
   createOrder(order: Order): Observable<Order> {
     return this.http
-      .post<OrderResponse>('https://pizza-api-app.herokuapp.com/api/orders', {
+      .post<OrderResponse>(`${environment.apiUrl}/api/orders`, {
         Crust: order.crust,
         Flavor: order.flavor,
         Size: order.size,
@@ -43,7 +44,7 @@ export class OrderService {
 
   getOrders(): Observable<Order[]> {
     return this.http
-      .get<OrderResponse[]>('https://pizza-api-app.herokuapp.com/api/orders')
+      .get<OrderResponse[]>(`${environment.apiUrl}/api/orders`)
       .pipe(
         map((response) => {
           return response.map(
@@ -63,7 +64,7 @@ export class OrderService {
 
   deleteOrder(id: number) {
     return this.http.delete(
-      `https://pizza-api-app.herokuapp.com/api/orders/${id}`
+      `${environment.apiUrl}/api/orders/${id}`
     );
   }
 }
