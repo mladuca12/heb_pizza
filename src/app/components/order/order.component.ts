@@ -43,6 +43,7 @@ export class OrderComponent {
         next: () => {
          this.isLoading = false;
          this.isOrderCreationFailed = false;
+         alert('Order Successfully Placed')
          this.router.navigate(['/orders']);
         },
         error: () => {

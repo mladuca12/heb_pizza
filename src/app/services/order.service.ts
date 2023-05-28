@@ -41,7 +41,25 @@ export class OrderService {
       );
   }
 
-  getOrders() {}
+  getOrders(): Observable<Order[]> {
+    return this.http
+      .get<OrderResponse[]>('https://pizza-api-app.herokuapp.com/api/orders')
+      .pipe(
+        map((response) => {
+          return response.map(
+            (res) =>
+              new Order(
+                res.Crust,
+                res.Flavor,
+                res.Size,
+                res.Table_No,
+                res.Order_ID,
+                res.Timestamp
+              )
+          );
+        })
+      );
+  }
 
   deleteOrder(id: number) {}
 }
