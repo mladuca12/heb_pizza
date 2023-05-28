@@ -6,12 +6,11 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'order', component: OrderComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

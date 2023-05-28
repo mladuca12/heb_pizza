@@ -1,9 +1,25 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label for="username">Username</label>
-  <input id="username" type="text" formControlName="username" />
-  <label for="password">Password</label>
-  <input id="password" type="password" formControlName="password" />
-  <button type="submit" [disabled]="!loginForm.valid">Login</button>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input
+      id="username"
+      type="text"
+      class="form-control"
+      formControlName="username"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      id="password"
+      type="password"
+      class="form-control"
+      formControlName="password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+    Login
+  </button>
   <p *ngIf="isLoginFailed">
     Username or password is incorrect. Please re-enter username and password
   </p>
