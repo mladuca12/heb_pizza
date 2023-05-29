@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/domain/order';
+import { PizzaConfiguration } from 'src/app/domain/pizza-configuration';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class OrderComponent {
   orderForm: FormGroup;
   isLoading = false;
   isOrderCreationFailed = false;
+  pizzaConfiguration = new PizzaConfiguration();
 
   constructor(
     private formBuilder: FormBuilder,

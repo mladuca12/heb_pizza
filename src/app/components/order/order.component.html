@@ -1,32 +1,34 @@
-<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()" style="width: 400px">
   <div class="mb-3">
     <label class="form-label" for="crust">Crust</label>
-    <input
-      class="form-control"
-      id="crust"
-      type="text"
-      formControlName="crust"
-    />
+    <select class="form-select" formControlName="crust" id="crust">
+      <option *ngFor="let c of pizzaConfiguration.crustTypes" [value]="c.id">
+        {{ c.value }}
+      </option>
+    </select>
   </div>
   <div class="mb-3">
     <label class="form-label" for="flavor">Flavor</label>
-    <input
-      class="form-control"
-      id="flavor"
-      type="text"
-      formControlName="flavor"
-    />
+    <select class="form-select" formControlName="flavor" id="flavor">
+      <option *ngFor="let f of pizzaConfiguration.flavors" [value]="f.id">
+        {{ f.value }}
+      </option>
+    </select>
   </div>
   <div class="mb-3">
     <label class="form-label" for="size">Size</label>
-    <input class="form-control" id="size" type="text" formControlName="size" />
+    <select class="form-select" formControlName="size" id="size">
+      <option *ngFor="let s of pizzaConfiguration.sizes" [value]="s.id">
+        {{ s.value }}
+      </option>
+    </select>
   </div>
-  <div class="mb-3">
+  <div class="mb-4">
     <label class="form-label" for="tableNumber">Table Number</label>
     <input
       class="form-control"
       id="tableNumber"
-      type="text"
+      type="number"
       formControlName="tableNumber"
     />
   </div>

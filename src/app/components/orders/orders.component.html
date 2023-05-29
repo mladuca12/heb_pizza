@@ -12,7 +12,7 @@
       [formControl]="filter"
     />
   </div>
-  <div>
+  <div class="mb-4">
     <ul *ngIf="filter.value.length < 3" class="list-group">
       <li
         *ngFor="let order of orders"
@@ -32,4 +32,5 @@
       </li>
     </ul>
   </div>
+  <a class="btn btn-primary" routerLink="/order">Order another pizza</a>
 </div>

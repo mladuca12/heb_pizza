@@ -1,1 +1,2 @@
-<a class="btn btn-primary" routerLink="/order">Order Pizza!</a>
+<a *ngIf="isLoggedIn" class="btn btn-primary" routerLink="/order">Order Pizza</a>
+<a *ngIf="!isLoggedIn" class="btn btn-primary" routerLink="/login">Log in to Order Pizza</a>

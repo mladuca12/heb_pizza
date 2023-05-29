@@ -2,13 +2,23 @@
   <a
     class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none"
     routerLink="/"
-    >Pizza</a
+  >
+    <img
+      src="/assets/pizza_logo.png"
+      style="height: 3.5rem; width: auto"
+      class="me-2"
+    />
+    <span class="fs-4">Matt's Pizza</span></a
   >
   <ul class="nav nav-pills">
     <li *ngIf="isLoggedIn" class="nav-item">
       <a class="nav-link" routerLink="/orders">Orders</a>
     </li>
-    <li *ngIf="!isLoggedIn" class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
-    <li *ngIf="isLoggedIn" class="nav-item"><a class="nav-link" (click)="logout()">Logout</a></li>
+    <li *ngIf="!isLoggedIn" class="nav-item">
+      <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+    <li *ngIf="isLoggedIn" class="nav-item">
+      <a class="nav-link" (click)="logout()">Logout</a>
+    </li>
   </ul>
 </header>

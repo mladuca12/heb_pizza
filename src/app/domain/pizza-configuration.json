@@ -1,0 +1,18 @@
+{
+  "crustTypes": [
+    { "id": "NORMAL", "value": "Normal" },
+    { "id": "THIN", "value": "Thin" },
+    { "id": "THICK", "value": "Thick" }
+  ],
+  "flavors": [
+    { "id": "BEEF", "value": "Beef" },
+    { "id": "CHEESE", "value": "Cheese" },
+    { "id": "CHICKEN-FAJITA", "value": "Chicken Fajita" },
+    { "id": "PEPPERONI", "value": "Pepperoni" }
+  ],
+  "sizes": [
+    { "id": "S", "value": "Small" },
+    { "id": "M", "value": "Medium" },
+    { "id": "L", "value": "Large" }
+  ]
+}
