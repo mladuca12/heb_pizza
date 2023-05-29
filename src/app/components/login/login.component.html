@@ -17,11 +17,13 @@
       formControlName="password"
     />
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+  <button *ngIf="!isLoading" type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
     Login
   </button>
   <p *ngIf="isLoginFailed">
-    Username or password is incorrect. Please re-enter username and password
+    Username or password is incorrect. Please re-enter username and password.
   </p>
-  <p *ngIf="isLoading">Loading...</p>
+  <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </form>

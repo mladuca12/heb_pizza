@@ -31,9 +31,16 @@
     />
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!orderForm.valid">
+  <button
+    *ngIf="!isLoading"
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!orderForm.valid"
+  >
     Order Your Pizza
   </button>
   <p *ngIf="isOrderCreationFailed">Could not create order. Please try again.</p>
-  <p *ngIf="isLoading">Loading...</p>
+  <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </form>
